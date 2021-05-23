@@ -27,18 +27,18 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(displayWidth,displayHeight);
   gameState = "play";
- ground = createSprite(windowWidth/2,windowHeight/2);
+ ground = createSprite(displayWidth/2,displayHeight/2);
  ground.scale =1.5;
  ground.addAnimation("r",groundImg);
- player = createSprite(windowWidth/2, windowHeight-100, 50, 50);
+ player = createSprite(displayWidth/2, displayHeight-100, 50, 50);
  player.addAnimation("run",playerImg)
- gameOver = createSprite(windowWidth/2,windowHeight/2-100);
+ gameOver = createSprite(displayWidth/2,displayHeight/2-100);
  gameOver.visible = false;
  gameOver.addImage(gameOverimg)
  gameOver.scale = 0.5
- reset = createSprite(windowWidth/2,windowHeight/2+50);
+ reset = createSprite(displayWidth/2,displayHeight/2+50);
  reset.addImage(resetImg);
  reset.visible = false;
  reset.scale = 0.3;
@@ -99,8 +99,8 @@ function draw() {
 
   drawSprites();
   fill("aqua");
-  text("COINS SCORE: " +coinScore,windowWidth/2+140,110);
-  text("DISTANCE: " +score,windowWidth/2+140,150);
+  text("COINS SCORE: " +coinScore,displayWidth/2+140,110);
+  text("DISTANCE: " +score,displayWidth/2+140,150);
 
 }
 function gameReset(){
@@ -117,11 +117,11 @@ function gameReset(){
 }
 
 function keyPressed(){
-  if((keyCode ===RIGHT_ARROW||touches[x]===300||touches[x]===450) && player.x<windowWidth/2+150){
+  if((keyCode ===RIGHT_ARROW||touches[x]===300||touches[x]===450) && player.x<displayWidth/2+150){
     player.x += 150;
 
   }
-  else if((keyCode ===LEFT_ARROW||touches[x]===300||touches[x]===150) && player.x>windowWidth/2-150){
+  else if((keyCode ===LEFT_ARROW||touches[x]===300||touches[x]===150) && player.x>displayWidth/2-150){
     player.x -= 150;
   }
 }   
@@ -133,11 +133,11 @@ function generateCoins(){
        coins.addImage(coinsImg);
        var number = Math.round(random(1,3))
        switch(number){
-         case 1:coins.x = windowWidth/2-150
+         case 1:coins.x = displayWidth/2-150
          break;
-         case 2:coins.x = windowWidth/2
+         case 2:coins.x = displayWidth/2
          break;
-         case 3:coins.x = windowWidth/2+150
+         case 3:coins.x = displayWidth/2+150
          break;
        }
        coins.velocityY = 20+score/100;
@@ -154,11 +154,11 @@ function createObstacles(){
     obstacles.addImage(obstacleImg);
     var number = Math.round(random(1,3))
     switch(number){
-      case 1:obstacles.x = windowWidth/2-150;
+      case 1:obstacles.x = displayWidth/2-150;
       break;
-      case 2:obstacles.x = windowWidth/2;
+      case 2:obstacles.x = displayWidth/2;
       break;
-      case 3:obstacles.x = windowWidth/2+150;
+      case 3:obstacles.x = displayWidth/2+150;
       break;
     }
     obstacles.velocityY = 20+score/100;
