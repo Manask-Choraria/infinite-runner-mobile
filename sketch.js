@@ -59,6 +59,7 @@ function draw() {
   ground.velocityY = 10+score/100;
   generateCoins();
   createObstacles();
+    keyPressed();
   if(coinsGroup.isTouching(player)){
     coinScore += 1
     coinsGroup.destroyEach();
